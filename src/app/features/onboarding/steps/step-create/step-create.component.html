@@ -1,0 +1,48 @@
+<div class="step-create">
+  @if (onboarding.selectedProvider(); as provider) {
+    <h2>Create your pod at {{ provider.name }}</h2>
+
+    <div class="provider-summary card">
+      <strong>{{ provider.name }}</strong>
+      <p>{{ provider.description }}</p>
+      <a routerLink="/onboarding/provider" class="change-link">Change provider</a>
+    </div>
+
+    <p class="explanation">
+      You'll be taken to {{ provider.name }}'s website to create a free account. Once you've created your pod,
+      come back here and click "I've already created it" to continue.
+    </p>
+
+    @if (!provider.selfHosted) {
+      <div class="vanity-field">
+        <label for="pod-name">Choose your pod name (optional)</label>
+        <div class="vanity-input-row">
+          <input
+            id="pod-name"
+            type="text"
+            placeholder="yourname"
+            [ngModel]="podName()"
+            (ngModelChange)="podName.set($event)"
+            maxlength="50"
+          />
+        </div>
+        @if (previewUrl()) {
+          <div class="preview-url">
+            Your pod address will be: <code>{{ previewUrl() }}</code>
+          </div>
+        }
+      </div>
+    }
+
+    <div class="actions">
+      <button class="btn btn-primary" (click)="openRegistration()">
+        Create my pod at {{ provider.name }} &rarr;
+      </button>
+      <button class="btn btn-outline" (click)="continue()">
+        I've already created it, continue
+      </button>
+    </div>
+  } @else {
+    <p>No provider selected. <a routerLink="/onboarding/provider">Go back and choose one.</a></p>
+  }
+</div>

@@ -1,0 +1,13 @@
+{
+  "@context": "https://www.w3.org/ns/solid/oidc-context.jsonld",
+  "client_id": "https://solid-entry.netlify.app/id",
+  "client_name": "Solid Onboarding",
+  "redirect_uris": ["https://solid-entry.netlify.app/onboarding/callback"],
+  "post_logout_redirect_uris": ["https://solid-entry.netlify.app/"],
+  "client_uri": "https://solid-entry.netlify.app/",
+  "scope": "openid profile webid offline_access",
+  "grant_types": ["authorization_code", "refresh_token"],
+  "response_types": ["code"],
+  "token_endpoint_auth_method": "none",
+  "application_type": "web"
+}

@@ -1,0 +1,25 @@
+<div class="gallery-page">
+  <header class="gallery-header">
+    <h1>App Gallery</h1>
+    <p>Discover apps that work with your pod. Your data stays yours.</p>
+  </header>
+
+  <nav class="category-tabs" aria-label="Filter by category">
+    @for (cat of categories; track cat) {
+      <button
+        class="tab-btn"
+        [class.active]="activeCategory() === cat"
+        (click)="activeCategory.set(cat)"
+      >{{ cat }}</button>
+    }
+  </nav>
+
+  <div class="app-grid">
+    @for (app of filtered(); track app.id) {
+      <app-app-card [app]="app" />
+    }
+    @empty {
+      <p class="no-results">No apps in this category yet.</p>
+    }
+  </div>
+</div>

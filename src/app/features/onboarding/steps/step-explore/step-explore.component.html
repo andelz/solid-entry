@@ -1,0 +1,36 @@
+<div class="step-explore">
+  <h2>You're in!</h2>
+  <p class="intro">Here's a peek at what's in your pod right now. Most pods start nearly empty — that changes once you connect apps.</p>
+
+  <div class="pod-preview">
+    @if (loading()) {
+      <div class="skeleton-list">
+        @for (n of [1,2,3]; track n) {
+          <div class="skeleton skeleton-row"></div>
+        }
+      </div>
+    } @else if (resources().length === 0) {
+      <div class="empty-state">
+        <span class="empty-icon">🫙</span>
+        <p>Your pod is empty.</p>
+        <p class="empty-sub">Connect an app below to start adding data.</p>
+      </div>
+    } @else {
+      <ul class="resource-list">
+        @for (r of resources(); track r.url) {
+          <li class="resource-item">
+            <span class="icon">{{ r.contentType | fileIcon : r.isContainer }}</span>
+            <span class="name">{{ r.name }}</span>
+            @if (r.isContainer) { <span class="badge tag">folder</span> }
+          </li>
+        }
+      </ul>
+    }
+  </div>
+
+  <div class="cta-group">
+    <a routerLink="/apps" class="btn btn-primary">Connect your first app &rarr;</a>
+    <a routerLink="/pod" class="btn btn-outline">Browse my full pod</a>
+    <a routerLink="/profile" class="btn btn-ghost">View my profile</a>
+  </div>
+</div>

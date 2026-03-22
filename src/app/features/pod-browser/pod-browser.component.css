@@ -1,0 +1,56 @@
+.pod-browser {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.browser-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.browser-header h1 { font-size: 1.5rem; font-weight: 700; }
+
+.toolbar { display: flex; gap: 10px; }
+.btn-sm  { padding: 6px 14px; font-size: 0.85rem; }
+
+.upload-label { cursor: pointer; }
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 24px;
+  font-size: 0.88rem;
+  flex-wrap: wrap;
+}
+
+.crumb-btn {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: 0.88rem;
+  padding: 0;
+}
+.crumb-btn:hover { text-decoration: underline; }
+.crumb-current { color: var(--color-text-muted); }
+.sep { color: var(--color-border); }
+
+.skeleton-grid, .resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.skeleton-card { height: 80px; border-radius: var(--radius-md); }
+
+.empty-state {
+  text-align: center;
+  padding: 64px 0;
+}
+.empty-icon { font-size: 3rem; display: block; margin-bottom: 12px; }
+.empty-state p { color: var(--color-text-muted); }
+.empty-sub { font-size: 0.88rem; margin-top: 6px; }

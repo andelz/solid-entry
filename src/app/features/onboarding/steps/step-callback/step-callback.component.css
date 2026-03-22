@@ -1,0 +1,52 @@
+.step-callback { max-width: 520px; animation: slideInUp 0.4s ease both; text-align: center; }
+
+.checking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 48px 0;
+  color: var(--color-text-muted);
+}
+
+/* Success */
+.success { position: relative; padding-top: 16px; }
+.success-icon { font-size: 3.5rem; margin-bottom: 12px; }
+.success h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; }
+.welcome { font-size: 1.05rem; color: var(--color-text-muted); margin-bottom: 28px; }
+
+.webid-section { text-align: left; margin-bottom: 28px; }
+.webid-section label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted); margin-bottom: 8px; }
+.webid-hint { font-size: 0.82rem; color: var(--color-text-muted); margin-top: 8px; }
+
+.step-cta { font-size: 1rem; padding: 12px 28px; }
+
+/* Confetti */
+.confetti-wrap {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 14px;
+  border-radius: 2px;
+  left: calc(var(--i) * 5%);
+  top: -20px;
+  animation: confettiFall calc(1.5s + var(--i) * 0.1s) ease forwards;
+  animation-delay: calc(var(--i) * 0.06s);
+}
+
+.confetti-piece:nth-child(3n)   { background: #7C3AED; }
+.confetti-piece:nth-child(3n+1) { background: #10B981; transform-origin: center; width: 10px; height: 10px; border-radius: 50%; }
+.confetti-piece:nth-child(3n+2) { background: #F59E0B; }
+
+/* Sign-in */
+.intro { color: var(--color-text-muted); margin-bottom: 28px; text-align: left; }
+h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 12px; text-align: left; }
+.sign-in-btn { font-size: 1rem; padding: 12px 24px; }
+.skip-hint { margin-top: 20px; font-size: 0.88rem; color: var(--color-text-muted); }

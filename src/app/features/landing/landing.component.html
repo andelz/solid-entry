@@ -1,0 +1,92 @@
+<main class="landing">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">Open standard &middot; No lock-in</div>
+        <h1>Your data, your rules.<br>A home for everything you create online.</h1>
+        <p class="hero-sub">
+          Most apps trap your data in their servers. Solid gives you a personal data home &mdash; called a pod &mdash;
+          that you own. Apps can access it, but you stay in control.
+        </p>
+        <div class="hero-actions">
+          <a routerLink="/onboarding" class="btn btn-primary">Get your pod &rarr;</a>
+          @if (auth.isLoggedIn()) {
+            <a routerLink="/pod" class="btn btn-outline">Open my pod</a>
+          } @else {
+            <button class="btn btn-outline" (click)="loginExisting()">I already have a pod</button>
+          }
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="pod-icon">
+          <svg viewBox="0 0 120 120" width="120" height="120">
+            <circle cx="60" cy="60" r="50" fill="#EDE9FE" stroke="#7C3AED" stroke-width="3"/>
+            <circle cx="60" cy="60" r="28" fill="#7C3AED"/>
+            <text x="60" y="67" text-anchor="middle" font-size="22" fill="white" font-family="system-ui">🫙</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explainer panels -->
+  <section class="explainer">
+    <div class="container">
+      <h2>How it works</h2>
+      <div class="panels">
+        <div class="panel" #panel>
+          <div class="panel-icon">🗄️</div>
+          <h3>Store</h3>
+          <p>Your data lives in your pod, not inside apps. Photos, notes, contacts &mdash; it all belongs to you.</p>
+        </div>
+        <div class="panel" #panel>
+          <div class="panel-icon">🔌</div>
+          <h3>Connect</h3>
+          <p>Apps ask your pod for permission to read or write. You decide what each app can access &mdash; and revoke it any time.</p>
+        </div>
+        <div class="panel" #panel>
+          <div class="panel-icon">🔄</div>
+          <h3>Switch</h3>
+          <p>Move to a new app any time. Your data comes with you because it was never the app's in the first place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="comparison">
+    <div class="container">
+      <h2>The old way vs. Solid</h2>
+      <div class="comparison-grid">
+        <div class="compare-col old">
+          <h3>Today</h3>
+          <ul>
+            <li>Each app stores your data in its own silo</li>
+            <li>Switching apps means starting over</li>
+            <li>Your data disappears if the service shuts down</li>
+            <li>You agree to terms you haven't read</li>
+          </ul>
+        </div>
+        <div class="compare-col new">
+          <h3>With Solid</h3>
+          <ul>
+            <li>One data home, many apps</li>
+            <li>Switch apps and keep everything</li>
+            <li>Your data is yours, stored where you choose</li>
+            <li>You grant or revoke access at any time</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA footer -->
+  <section class="cta-footer">
+    <div class="container">
+      <h2>Ready to take back your data?</h2>
+      <p>It takes under 5 minutes to set up your first pod.</p>
+      <a routerLink="/onboarding" class="btn btn-primary">Get started free &rarr;</a>
+    </div>
+  </section>
+</main>

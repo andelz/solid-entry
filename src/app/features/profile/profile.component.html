@@ -1,0 +1,52 @@
+<div class="profile-page">
+  <h1>My Profile</h1>
+
+  @if (loading()) {
+    <div class="skeleton-block skeleton"></div>
+  } @else if (!auth.isLoggedIn()) {
+    <p>You need to <a routerLink="/onboarding/callback">sign in</a> to view your profile.</p>
+  } @else {
+
+    <section class="webid-section card">
+      <h2>Your web address</h2>
+      <app-webid-display [webId]="auth.webId()!" />
+      <details class="explainer">
+        <summary>What is a web address?</summary>
+        <p>
+          Your web address (WebID) is a permanent URL that represents you on the Solid web.
+          You can share it like an email address so other apps and people can find your public profile.
+        </p>
+      </details>
+    </section>
+
+    <section class="edit-section card">
+      <h2>Edit profile</h2>
+      <form [formGroup]="form" (ngSubmit)="save()">
+        <div class="field">
+          <label for="name">Display name</label>
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            placeholder="Your name"
+          />
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" [disabled]="saving()">
+            {{ saving() ? 'Saving…' : 'Save changes' }}
+          </button>
+          @if (saved()) {
+            <span class="saved-msg">✓ Saved!</span>
+          }
+        </div>
+      </form>
+    </section>
+
+    <nav class="profile-nav">
+      <a routerLink="/pod" class="btn btn-outline">Browse my pod</a>
+      <a routerLink="/apps" class="btn btn-ghost">App gallery</a>
+      <button class="btn btn-ghost logout-btn" (click)="auth.logout()">Sign out</button>
+    </nav>
+  }
+</div>

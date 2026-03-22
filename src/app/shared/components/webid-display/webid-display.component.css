@@ -1,0 +1,25 @@
+.webid-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+
+.webid-code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  word-break: break-all;
+  flex: 1;
+}
+
+.copy-btn {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  color: var(--color-text-muted);
+}
+.copy-btn:hover { color: var(--color-text); }

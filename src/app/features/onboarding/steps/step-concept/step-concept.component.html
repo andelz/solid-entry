@@ -1,0 +1,50 @@
+<div class="step-concept">
+  <h2>What is a pod?</h2>
+  <p class="intro">Think of a pod as your personal data home on the web — like a USB drive, but online and shareable on your terms.</p>
+
+  <!-- SVG diagram: silo model vs pod model -->
+  <div class="diagram">
+    <div class="diagram-side silo">
+      <h3>Today</h3>
+      <svg viewBox="0 0 200 160" width="200" height="160" aria-label="Siloed app model">
+        <rect x="10"  y="50" width="50" height="90" rx="6" fill="#FEE2E2" stroke="#F87171" stroke-width="1.5"/>
+        <rect x="75"  y="50" width="50" height="90" rx="6" fill="#FEE2E2" stroke="#F87171" stroke-width="1.5"/>
+        <rect x="140" y="50" width="50" height="90" rx="6" fill="#FEE2E2" stroke="#F87171" stroke-width="1.5"/>
+        <text x="35"  y="30" text-anchor="middle" font-size="10" fill="#374151">You</text>
+        <line x1="35"  y1="35" x2="35"  y2="50" stroke="#9CA3AF" stroke-width="1.5"/>
+        <line x1="100" y1="35" x2="100" y2="50" stroke="#9CA3AF" stroke-width="1.5"/>
+        <line x1="165" y1="35" x2="165" y2="50" stroke="#9CA3AF" stroke-width="1.5"/>
+        <text x="35"  y="100" text-anchor="middle" font-size="9" fill="#991B1B">App A&#10;data</text>
+        <text x="100" y="100" text-anchor="middle" font-size="9" fill="#991B1B">App B&#10;data</text>
+        <text x="165" y="100" text-anchor="middle" font-size="9" fill="#991B1B">App C&#10;data</text>
+      </svg>
+      <p>Your data is trapped in each app's silo.</p>
+    </div>
+    <div class="diagram-arrow">→</div>
+    <div class="diagram-side solid">
+      <h3>With Solid</h3>
+      <svg viewBox="0 0 200 160" width="200" height="160" aria-label="Solid pod model">
+        <circle cx="100" cy="90" r="40" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2"/>
+        <text x="100" y="95" text-anchor="middle" font-size="11" fill="#4C1D95" font-weight="bold">Your Pod</text>
+        <rect x="10"  y="10" width="40" height="28" rx="4" fill="#F0FDF4" stroke="#34D399" stroke-width="1.5"/>
+        <rect x="80"  y="10" width="40" height="28" rx="4" fill="#F0FDF4" stroke="#34D399" stroke-width="1.5"/>
+        <rect x="150" y="10" width="40" height="28" rx="4" fill="#F0FDF4" stroke="#34D399" stroke-width="1.5"/>
+        <text x="30"  y="28" text-anchor="middle" font-size="8" fill="#065F46">App A</text>
+        <text x="100" y="28" text-anchor="middle" font-size="8" fill="#065F46">App B</text>
+        <text x="170" y="28" text-anchor="middle" font-size="8" fill="#065F46">App C</text>
+        <line x1="30"  y1="38" x2="70"  y2="60" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <line x1="100" y1="38" x2="100" y2="50" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <line x1="170" y1="38" x2="130" y2="60" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="4,3"/>
+      </svg>
+      <p>Apps connect to your pod. Data stays yours.</p>
+    </div>
+  </div>
+
+  <ul class="bullets">
+    <li>🗄️ Your pod is like a personal cloud drive you actually own</li>
+    <li>🔑 Apps ask for permission — you can revoke it any time</li>
+    <li>🔄 Switch apps without losing your data</li>
+  </ul>
+
+  <a routerLink="/onboarding/provider" class="btn btn-primary step-cta">Got it, let's go &rarr;</a>
+</div>

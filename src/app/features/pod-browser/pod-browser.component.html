@@ -1,0 +1,61 @@
+<div class="pod-browser">
+  <header class="browser-header">
+    <h1>My Pod</h1>
+    <div class="toolbar">
+      <button class="btn btn-outline btn-sm" (click)="createFolder()">+ New folder</button>
+      <label class="btn btn-outline btn-sm upload-label" aria-label="Upload file">
+        ↑ Upload
+        <input type="file" (change)="uploadFile($event)" hidden>
+      </label>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Pod navigation">
+    @for (crumb of breadcrumbs(); track crumb.url; let last = $last) {
+      @if (!last) {
+        <button class="crumb-btn" (click)="navigate(crumb.url)">{{ crumb.label }}</button>
+        <span class="sep">/</span>
+      } @else {
+        <span class="crumb-current">{{ crumb.label }}</span>
+      }
+    }
+  </nav>
+
+  <!-- Content -->
+  <main class="browser-content">
+    @if (loading()) {
+      <div class="skeleton-grid">
+        @for (n of [1,2,3,4,5,6]; track n) {
+          <div class="skeleton skeleton-card"></div>
+        }
+      </div>
+    } @else if (resources().length === 0) {
+      <div class="empty-state">
+        <span class="empty-icon">🫙</span>
+        <p>This folder is empty.</p>
+        <p class="empty-sub"><a routerLink="/apps">Connect an app to get started.</a></p>
+      </div>
+    } @else {
+      <div class="resource-grid">
+        @for (r of resources(); track r.url) {
+          <app-file-card
+            [resource]="r"
+            [permission]="permissionFor(r.url)"
+            (navigate)="navigate($event)"
+            (delete)="confirmDelete($event)"
+          />
+        }
+      </div>
+    }
+  </main>
+
+  @if (deleteTarget()) {
+    <app-confirm-dialog
+      [message]="deleteMessage()"
+      confirmLabel="Delete"
+      (confirmed)="doDelete()"
+      (cancelled)="cancelDelete()"
+    />
+  }
+</div>

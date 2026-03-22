@@ -1,0 +1,14 @@
+<div class="onboarding-shell">
+  <header class="onboarding-header">
+    <a href="/" class="logo">Solid Onboarding</a>
+  </header>
+
+  <app-step-progress
+    [steps]="stepLabels"
+    [currentStep]="onboarding.currentStep()"
+  />
+
+  <main class="onboarding-content">
+    <router-outlet />
+  </main>
+</div>

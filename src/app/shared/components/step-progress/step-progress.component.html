@@ -1,0 +1,17 @@
+<nav class="step-progress" aria-label="Onboarding progress">
+  @for (step of stepsList(); track step.index) {
+    <div class="step" [ngClass]="{ done: step.done, active: step.active }">
+      <div class="step-dot" [attr.aria-current]="step.active ? 'step' : null">
+        @if (step.done) {
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        } @else {
+          <span>{{ step.index + 1 }}</span>
+        }
+      </div>
+      <span class="step-label">{{ step.label }}</span>
+    </div>
+    @if (step.index < steps().length - 1) {
+      <div class="step-line" [ngClass]="{ done: step.done }"></div>
+    }
+  }
+</nav>

@@ -1,0 +1,72 @@
+.step-provider { max-width: 640px; animation: slideInUp 0.4s ease both; }
+
+h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; }
+.intro { color: var(--color-text-muted); margin-bottom: 28px; }
+
+.quiz { display: flex; flex-direction: column; gap: 28px; }
+
+fieldset {
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+legend {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--color-text);
+}
+
+.radio-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.radio-card input { margin-top: 3px; accent-color: var(--color-primary); }
+.radio-card strong { display: block; font-size: 0.95rem; }
+.radio-card span   { font-size: 0.85rem; color: var(--color-text-muted); }
+.radio-card.selected { border-color: var(--color-primary); background: #F5F3FF; }
+
+.step-cta { align-self: flex-start; }
+
+/* Results */
+.provider-card { position: relative; margin-bottom: 16px; }
+.provider-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+.provider-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.provider-card p  { color: var(--color-text-muted); margin-bottom: 14px; }
+
+.provider-badge {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: var(--color-primary);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 12px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.provider-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+
+.difficulty-easy   { background: #D1FAE5; color: #065F46; }
+.difficulty-medium { background: #FEF3C7; color: #92400E; }
+.difficulty-advanced { background: #FEE2E2; color: #991B1B; }
+.tag { background: #EDE9FE; color: #4C1D95; }
+
+.alt-heading { font-size: 1rem; font-weight: 700; margin: 24px 0 12px; }
+.alt-list { display: flex; flex-direction: column; gap: 12px; }
+
+.btn-sm { padding: 6px 16px; font-size: 0.85rem; }
+.back-btn { margin-top: 20px; padding-left: 0; }

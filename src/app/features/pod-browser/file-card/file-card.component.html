@@ -1,0 +1,14 @@
+<div class="file-card card" (click)="resource().isContainer && navigate.emit(resource().url)" [class.folder]="resource().isContainer">
+  <div class="file-icon">{{ resource().contentType | fileIcon : resource().isContainer }}</div>
+  <div class="file-info">
+    <span class="file-name">{{ resource().name }}</span>
+    <app-permission-badge [permission]="permission()" />
+  </div>
+  <button class="delete-btn" (click)="$event.stopPropagation(); delete.emit(resource().url)" aria-label="Delete {{ resource().name }}">
+    <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+      <polyline points="1,3 13,3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M5 3V2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="2" y="3" width="10" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
+</div>

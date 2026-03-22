@@ -1,0 +1,37 @@
+.step-create { max-width: 580px; animation: slideInUp 0.4s ease both; }
+
+h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 20px; }
+
+.provider-summary { margin-bottom: 20px; }
+.provider-summary strong { font-size: 1rem; }
+.provider-summary p { color: var(--color-text-muted); font-size: 0.9rem; margin: 6px 0 10px; }
+.change-link { font-size: 0.85rem; color: var(--color-primary); }
+
+.explanation { color: var(--color-text-muted); margin-bottom: 24px; font-size: 0.95rem; }
+
+.vanity-field { margin-bottom: 28px; }
+.vanity-field label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; }
+
+.vanity-input-row input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-family: var(--font-mono);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+.vanity-input-row input:focus { border-color: var(--color-primary); }
+
+.preview-url {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+.preview-url code {
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+}
+
+.actions { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }

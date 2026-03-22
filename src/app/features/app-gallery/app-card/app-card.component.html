@@ -1,0 +1,31 @@
+<div class="app-card card">
+  <div class="app-header">
+    <div class="app-logo">{{ app().name.charAt(0) }}</div>
+    <div>
+      <h3>{{ app().name }}</h3>
+      <span class="category-badge badge">{{ app().category }}</span>
+    </div>
+    <span class="status-badge badge" [class]="'status-' + app().status">{{ app().status }}</span>
+  </div>
+
+  <p class="tagline">{{ app().tagline }}</p>
+
+  <details class="permissions-detail">
+    <summary>What will this app access?</summary>
+    <ul class="perm-list">
+      @for (p of app().dataAccess; track p.container) {
+        <li>
+          <span class="perm-access badge" [class]="'access-' + p.access.replace('/', '')">{{ p.access }}</span>
+          {{ p.description }}
+        </li>
+      }
+    </ul>
+  </details>
+
+  <div class="app-footer">
+    @if (app().openSource) {
+      <span class="oss-badge">Open source</span>
+    }
+    <a [href]="app().url" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Open App</a>
+  </div>
+</div>

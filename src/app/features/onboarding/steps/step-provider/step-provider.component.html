@@ -1,0 +1,95 @@
+<div class="step-provider">
+  @if (!showResult()) {
+    <h2>Find your perfect pod provider</h2>
+    <p class="intro">Answer 3 quick questions and we'll suggest the best option for you.</p>
+
+    <form (ngSubmit)="compute()" class="quiz">
+      <fieldset>
+        <legend>Where would you like your pod hosted?</legend>
+        <label class="radio-card" [class.selected]="hosting() === 'managed'">
+          <input type="radio" name="hosting" value="managed" [(ngModel)]="$any(this).hosting" (change)="hosting.set('managed')">
+          <div>
+            <strong>Managed for me</strong>
+            <span>A free service handles everything. Easy setup, no technical knowledge required.</span>
+          </div>
+        </label>
+        <label class="radio-card" [class.selected]="hosting() === 'self-host'">
+          <input type="radio" name="hosting" value="self-host" [(ngModel)]="$any(this).hosting" (change)="hosting.set('self-host')">
+          <div>
+            <strong>I'll self-host</strong>
+            <span>Run your own server. Full control, more setup required.</span>
+          </div>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Do you want a custom web address?</legend>
+        <label class="radio-card" [class.selected]="customDomain() === 'no'">
+          <input type="radio" name="customDomain" value="no" [(ngModel)]="$any(this).customDomain" (change)="customDomain.set('no')">
+          <div>
+            <strong>No, keep it simple</strong>
+            <span>Something like <em>yourname.solidcommunity.net</em> is fine.</span>
+          </div>
+        </label>
+        <label class="radio-card" [class.selected]="customDomain() === 'yes'">
+          <input type="radio" name="customDomain" value="yes" [(ngModel)]="$any(this).customDomain" (change)="customDomain.set('yes')">
+          <div>
+            <strong>Yes, I have my own domain</strong>
+            <span>Use <em>pod.yourdomain.com</em> as your pod address.</span>
+          </div>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>How comfortable are you with the command line?</legend>
+        <label class="radio-card" [class.selected]="cli() === 'no'">
+          <input type="radio" name="cli" value="no" [(ngModel)]="$any(this).cli" (change)="cli.set('no')">
+          <div>
+            <strong>Not really</strong>
+            <span>I prefer clicking through a web interface.</span>
+          </div>
+        </label>
+        <label class="radio-card" [class.selected]="cli() === 'yes'">
+          <input type="radio" name="cli" value="yes" [(ngModel)]="$any(this).cli" (change)="cli.set('yes')">
+          <div>
+            <strong>Yes, comfortable with terminal</strong>
+            <span>I can run commands and edit config files.</span>
+          </div>
+        </label>
+      </fieldset>
+
+      <button type="submit" class="btn btn-primary step-cta">See my recommendation &rarr;</button>
+    </form>
+  } @else {
+    <h2>Your recommended provider</h2>
+
+    @if (recommended(); as rec) {
+      <div class="provider-card recommended card">
+        <div class="provider-badge">Recommended</div>
+        <h3>{{ rec.name }}</h3>
+        <p>{{ rec.description }}</p>
+        <div class="provider-meta">
+          <span class="badge" [class]="'difficulty-' + rec.difficulty">{{ rec.difficulty }}</span>
+          @if (!rec.selfHosted) { <span class="badge tag">Managed</span> }
+          @if (rec.customDomain) { <span class="badge tag">Custom domain</span> }
+        </div>
+        <button class="btn btn-primary" (click)="select(rec)">Choose {{ rec.name }} &rarr;</button>
+      </div>
+    }
+
+    @if (alternatives().length) {
+      <h3 class="alt-heading">Alternatives</h3>
+      <div class="alt-list">
+        @for (alt of alternatives(); track alt.id) {
+          <div class="provider-card card alt">
+            <h4>{{ alt.name }}</h4>
+            <p>{{ alt.description }}</p>
+            <button class="btn btn-outline btn-sm" (click)="select(alt)">Choose this one</button>
+          </div>
+        }
+      </div>
+    }
+
+    <button class="btn btn-ghost back-btn" (click)="back()">&larr; Back to questions</button>
+  }
+</div>
