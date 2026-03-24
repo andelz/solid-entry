@@ -44,6 +44,50 @@ h1 {
 
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
+.login-picker {
+  margin-top: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  max-width: 480px;
+  box-shadow: var(--shadow-sm);
+}
+
+.login-picker-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
+.login-picker-providers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.login-picker-custom {
+  display: flex;
+  gap: 8px;
+}
+
+.login-picker-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  outline: none;
+}
+
+.login-picker-input:focus {
+  border-color: var(--color-primary);
+}
+
 .hero-visual { flex-shrink: 0; }
 
 .pod-icon {

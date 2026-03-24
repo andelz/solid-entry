@@ -1,10 +1,11 @@
 import { Component, signal, computed } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SOLID_APPS, APP_CATEGORIES } from '../../core/data/apps-registry.data';
 import { AppCardComponent } from './app-card/app-card.component';
 
 @Component({
   selector: 'app-app-gallery',
-  imports: [AppCardComponent],
+  imports: [RouterLink, AppCardComponent],
   templateUrl: './app-gallery.component.html',
   styleUrl: './app-gallery.component.css',
 })

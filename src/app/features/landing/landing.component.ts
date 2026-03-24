@@ -1,11 +1,13 @@
-import { Component, inject, AfterViewInit, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { Component, inject, AfterViewInit, ElementRef, QueryList, ViewChildren, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { OnboardingService } from '../../core/services/onboarding.service';
+import { PROVIDERS } from '../../core/data/providers.data';
 
 @Component({
   selector: 'app-landing',
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css',
 })
@@ -15,6 +17,11 @@ export class LandingComponent implements AfterViewInit {
 
   @ViewChildren('panel') panels!: QueryList<ElementRef>;
 
+  showLoginPicker = signal(false);
+  customIssuer = signal('');
+
+  readonly knownProviders = PROVIDERS.filter(p => !p.selfHosted);
+
   ngAfterViewInit(): void {
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
@@ -23,7 +30,19 @@ export class LandingComponent implements AfterViewInit {
     this.panels.forEach(p => observer.observe(p.nativeElement));
   }
 
-  loginExisting(): void {
-    this.auth.loginWithProvider('https://solidcommunity.net');
+  toggleLoginPicker(): void {
+    this.showLoginPicker.update(v => !v);
+    this.customIssuer.set('');
+  }
+
+  loginWithProvider(oidcIssuer: string): void {
+    this.auth.loginWithProvider(oidcIssuer);
+  }
+
+  loginCustom(): void {
+    const issuer = this.customIssuer().trim();
+    if (!issuer) return;
+    const url = issuer.startsWith('http') ? issuer : `https://${issuer}`;
+    this.auth.loginWithProvider(url);
   }
 }

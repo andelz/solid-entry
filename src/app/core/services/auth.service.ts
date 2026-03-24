@@ -31,12 +31,13 @@ export class AuthService {
   }
 
   async loginWithProvider(oidcIssuer: string): Promise<void> {
-    await login({
+    const loginParams: Parameters<typeof login>[0] = {
       oidcIssuer,
       redirectUrl: `${environment.appOrigin}/onboarding/callback`,
       clientName: 'Solid Onboarding',
-      clientId: `${environment.appOrigin}/id`,
-    });
+    };
+    loginParams.clientId = `${environment.appOrigin}/id`;
+    await login(loginParams);
   }
 
   async logout(): Promise<void> {

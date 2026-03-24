@@ -16,13 +16,20 @@ export class StepExploreComponent implements OnInit {
 
   resources = signal<ResourceInfo[]>([]);
   loading = signal(true);
+  error = signal(false);
 
   ngOnInit(): void {
     const podUrl = this.auth.podUrl();
     if (podUrl) {
-      this.pod.listContainer(podUrl).subscribe(r => {
-        this.resources.set(r);
-        this.loading.set(false);
+      this.pod.listContainer(podUrl).subscribe({
+        next: r => {
+          this.resources.set(r);
+          this.loading.set(false);
+        },
+        error: () => {
+          this.error.set(true);
+          this.loading.set(false);
+        },
       });
     } else {
       this.loading.set(false);

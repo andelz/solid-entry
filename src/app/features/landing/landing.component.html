@@ -14,9 +14,30 @@
           @if (auth.isLoggedIn()) {
             <a routerLink="/pod" class="btn btn-outline">Open my pod</a>
           } @else {
-            <button class="btn btn-outline" (click)="loginExisting()">I already have a pod</button>
+            <button class="btn btn-outline" (click)="toggleLoginPicker()">I already have a pod</button>
           }
         </div>
+
+        @if (showLoginPicker()) {
+          <div class="login-picker">
+            <p class="login-picker-label">Where is your pod hosted?</p>
+            <div class="login-picker-providers">
+              @for (p of knownProviders; track p.id) {
+                <button class="btn btn-outline btn-sm" (click)="loginWithProvider(p.oidcIssuer)">{{ p.name }}</button>
+              }
+            </div>
+            <div class="login-picker-custom">
+              <input
+                type="text"
+                [ngModel]="customIssuer()"
+                (ngModelChange)="customIssuer.set($event)"
+                placeholder="Or enter your pod address, e.g. mypod.example.com"
+                class="login-picker-input"
+              />
+              <button class="btn btn-primary btn-sm" (click)="loginCustom()" [disabled]="!customIssuer().trim()">Log in</button>
+            </div>
+          </div>
+        }
       </div>
       <div class="hero-visual" aria-hidden="true">
         <div class="pod-icon">

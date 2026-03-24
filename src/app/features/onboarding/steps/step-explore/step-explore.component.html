@@ -9,6 +9,12 @@
           <div class="skeleton skeleton-row"></div>
         }
       </div>
+    } @else if (error()) {
+      <div class="empty-state">
+        <span class="empty-icon">⚠️</span>
+        <p>Couldn't load your pod.</p>
+        <p class="empty-sub">Check your connection and try refreshing the page.</p>
+      </div>
     } @else if (resources().length === 0) {
       <div class="empty-state">
         <span class="empty-icon">🫙</span>
@@ -32,5 +38,6 @@
     <a routerLink="/apps" class="btn btn-primary">Connect your first app &rarr;</a>
     <a routerLink="/pod" class="btn btn-outline">Browse my full pod</a>
     <a routerLink="/profile" class="btn btn-ghost">View my profile</a>
+    <a routerLink="/" class="btn btn-ghost">← Home</a>
   </div>
 </div>

@@ -30,20 +30,15 @@ export class PodService {
   }
 
   private async _listContainer(url: string): Promise<ResourceInfo[]> {
-    try {
-      const dataset = await getSolidDataset(url, { fetch: this.auth.sessionFetch });
-      const urls = getContainedResourceUrlAll(dataset);
-      return urls
-        .filter(u => !u.endsWith('.acl') && !u.endsWith('.meta'))
-        .map(u => ({
-          url: u,
-          name: this._resourceName(u),
-          isContainer: u.endsWith('/'),
-        }));
-    } catch (err) {
-      this.errorService.handle(err);
-      return [];
-    }
+    const dataset = await getSolidDataset(url, { fetch: this.auth.sessionFetch });
+    const urls = getContainedResourceUrlAll(dataset);
+    return urls
+      .filter(u => !u.endsWith('.acl') && !u.endsWith('.meta'))
+      .map(u => ({
+        url: u,
+        name: this._resourceName(u),
+        isContainer: u.endsWith('/'),
+      }));
   }
 
   deleteResource(url: string): Observable<void> {
