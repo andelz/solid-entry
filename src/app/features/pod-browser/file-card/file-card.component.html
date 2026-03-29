@@ -2,7 +2,12 @@
   <div class="file-icon">{{ resource().contentType | fileIcon : resource().isContainer }}</div>
   <div class="file-info">
     <span class="file-name">{{ resource().name }}</span>
-    <app-permission-badge [permission]="permission()" />
+    <div class="file-meta">
+      <app-permission-badge [permission]="permission()" />
+      @for (app of associatedApps(); track app.id) {
+        <span class="badge app-badge">{{ app.name }}</span>
+      }
+    </div>
   </div>
   <button class="delete-btn" (click)="$event.stopPropagation(); delete.emit(resource().url)" aria-label="Delete {{ resource().name }}">
     <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">

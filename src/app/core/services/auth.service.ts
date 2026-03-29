@@ -30,10 +30,10 @@ export class AuthService {
     }
   }
 
-  async loginWithProvider(oidcIssuer: string): Promise<void> {
+  async loginWithProvider(oidcIssuer: string, redirectPath = '/onboarding/callback'): Promise<void> {
     const loginParams: Parameters<typeof login>[0] = {
       oidcIssuer,
-      redirectUrl: `${environment.appOrigin}/onboarding/callback`,
+      redirectUrl: `${environment.appOrigin}${redirectPath}`,
       clientName: 'Solid Onboarding',
     };
     loginParams.clientId = environment.clientIdUrl;

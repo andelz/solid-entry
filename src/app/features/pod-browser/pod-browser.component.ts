@@ -2,6 +2,8 @@ import { Component, inject, OnInit, signal, computed, Signal } from '@angular/co
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { PodService, ResourceInfo } from '../../core/services/pod.service';
+import { AppFolderService } from '../../core/services/app-folder.service';
+import { SolidApp } from '../../core/models/solid-app.model';
 import { FileCardComponent } from './file-card/file-card.component';
 import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
 
@@ -14,6 +16,7 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
 export class PodBrowserComponent implements OnInit {
   auth = inject(AuthService);
   private pod = inject(PodService);
+  private appFolder = inject(AppFolderService);
 
   resources = signal<ResourceInfo[]>([]);
   permissions = signal<Record<string, 'public' | 'private' | 'shared'>>({});
@@ -45,6 +48,12 @@ export class PodBrowserComponent implements OnInit {
 
   permissionFor(url: string): 'public' | 'private' | 'shared' {
     return this.permissions()[url] ?? 'private';
+  }
+
+  appsFor(url: string): SolidApp[] {
+    const podUrl = this.auth.podUrl();
+    if (!podUrl) return [];
+    return this.appFolder.getAppsForResource(url, podUrl);
   }
 
   confirmDelete(url: string): void {

@@ -26,6 +26,11 @@ export class StepCallbackComponent implements OnInit {
   ngOnInit(): void {
     // APP_INITIALIZER already called handleIncomingRedirect — just read the settled state
     this.checking.set(false);
+
+    // Returning user from landing page login: skip onboarding, go to explorer
+    if (this.auth.isLoggedIn() && this.onboarding.currentStep() === 0) {
+      this.router.navigate(['/explorer']);
+    }
   }
 
   login(): void {
@@ -35,6 +40,6 @@ export class StepCallbackComponent implements OnInit {
   }
 
   continue(): void {
-    this.router.navigate(['/onboarding/explore']);
+    this.router.navigate(['/onboarding/complete']);
   }
 }

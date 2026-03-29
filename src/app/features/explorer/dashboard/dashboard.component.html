@@ -1,0 +1,81 @@
+<div class="dashboard">
+  <h1>Dashboard</h1>
+
+  <!-- Identity -->
+  <section class="section">
+    <h2>Your identity</h2>
+    <div class="card identity-card">
+      @if (auth.webId(); as webId) {
+        <div class="identity-row">
+          <span class="identity-label">Web address</span>
+          <app-webid-display [webId]="webId" />
+        </div>
+      }
+      @if (auth.podUrl(); as podUrl) {
+        <div class="identity-row">
+          <span class="identity-label">Data home</span>
+          <span class="identity-value mono">{{ podUrl }}</span>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Pod summary -->
+  <section class="section">
+    <h2>Your pod</h2>
+    @if (loading()) {
+      <div class="card">
+        <div class="skeleton skeleton-block"></div>
+      </div>
+    } @else {
+      <div class="stats-row">
+        <div class="card stat-card">
+          <span class="stat-value">{{ itemCount() }}</span>
+          <span class="stat-label">items at root</span>
+        </div>
+        <div class="card stat-card">
+          <span class="stat-value">{{ connectedApps().length }}</span>
+          <span class="stat-label">apps detected</span>
+        </div>
+      </div>
+    }
+  </section>
+
+  <!-- Connected apps -->
+  @if (!loading() && connectedApps().length > 0) {
+    <section class="section">
+      <h2>Connected apps</h2>
+      <div class="app-list">
+        @for (app of connectedApps(); track app.id) {
+          <div class="card app-row">
+            <div class="app-avatar">{{ app.name.charAt(0) }}</div>
+            <div class="app-info">
+              <span class="app-name">{{ app.name }}</span>
+              <span class="app-tagline">{{ app.tagline }}</span>
+            </div>
+            <span class="badge app-status">{{ app.status }}</span>
+          </div>
+        }
+      </div>
+    </section>
+  }
+
+  <!-- Quick actions -->
+  <section class="section">
+    <h2>Quick actions</h2>
+    <div class="actions-row">
+      <a routerLink="../files" class="card action-card">
+        <span class="action-icon">&#128193;</span>
+        <span class="action-label">Browse files</span>
+      </a>
+      <a routerLink="../apps" class="card action-card">
+        <span class="action-icon">&#9674;</span>
+        <span class="action-label">Discover apps</span>
+      </a>
+      <a routerLink="../profile" class="card action-card">
+        <span class="action-icon">&#9679;</span>
+        <span class="action-label">Edit profile</span>
+      </a>
+    </div>
+  </section>
+</div>

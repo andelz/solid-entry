@@ -4,7 +4,7 @@ import { filter } from 'rxjs/operators';
 import { OnboardingService } from '../../core/services/onboarding.service';
 import { StepProgressComponent } from '../../shared/components/step-progress/step-progress.component';
 
-const STEP_LABELS = ['What is a Pod?', 'Choose Provider', 'Create Pod', 'Connect', 'Explore'];
+const STEP_LABELS = ['What is a Pod?', 'Choose Provider', 'Create Pod', 'Connect', 'Done!'];
 
 @Component({
   selector: 'app-onboarding',

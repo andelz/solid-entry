@@ -1,7 +1,6 @@
 <div class="pod-browser">
   <header class="browser-header">
-    <a routerLink="/" class="back-home">← Home</a>
-    <h1>My Pod</h1>
+    <h1>Files</h1>
     <div class="toolbar">
       <button class="btn btn-outline btn-sm" (click)="createFolder()">+ New folder</button>
       <label class="btn btn-outline btn-sm upload-label" aria-label="Upload file">
@@ -35,7 +34,7 @@
       <div class="empty-state">
         <span class="empty-icon">🫙</span>
         <p>This folder is empty.</p>
-        <p class="empty-sub"><a routerLink="/apps">Connect an app to get started.</a></p>
+        <p class="empty-sub"><a routerLink="../apps">Connect an app to get started.</a></p>
       </div>
     } @else {
       <div class="resource-grid">
@@ -43,6 +42,7 @@
           <app-file-card
             [resource]="r"
             [permission]="permissionFor(r.url)"
+            [associatedApps]="appsFor(r.url)"
             (navigate)="navigate($event)"
             (delete)="confirmDelete($event)"
           />

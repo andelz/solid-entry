@@ -15,22 +15,24 @@ export const routes: Routes = [
       { path: 'provider', loadComponent: () => import('./features/onboarding/steps/step-provider/step-provider.component').then(m => m.StepProviderComponent) },
       { path: 'create',   loadComponent: () => import('./features/onboarding/steps/step-create/step-create.component').then(m => m.StepCreateComponent) },
       { path: 'callback', loadComponent: () => import('./features/onboarding/steps/step-callback/step-callback.component').then(m => m.StepCallbackComponent) },
-      { path: 'explore',  loadComponent: () => import('./features/onboarding/steps/step-explore/step-explore.component').then(m => m.StepExploreComponent) },
+      { path: 'complete', loadComponent: () => import('./features/onboarding/steps/step-complete/step-complete.component').then(m => m.StepCompleteComponent) },
     ],
   },
   {
-    path: 'pod',
-    loadComponent: () => import('./features/pod-browser/pod-browser.component').then(m => m.PodBrowserComponent),
+    path: 'explorer',
+    loadComponent: () => import('./features/explorer/explorer-shell.component').then(m => m.ExplorerShellComponent),
     canActivate: [authGuard],
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', loadComponent: () => import('./features/explorer/dashboard/dashboard.component').then(m => m.DashboardComponent) },
+      { path: 'files',     loadComponent: () => import('./features/pod-browser/pod-browser.component').then(m => m.PodBrowserComponent) },
+      { path: 'apps',      loadComponent: () => import('./features/app-gallery/app-gallery.component').then(m => m.AppGalleryComponent) },
+      { path: 'profile',   loadComponent: () => import('./features/profile/profile.component').then(m => m.ProfileComponent) },
+    ],
   },
-  {
-    path: 'apps',
-    loadComponent: () => import('./features/app-gallery/app-gallery.component').then(m => m.AppGalleryComponent),
-  },
-  {
-    path: 'profile',
-    loadComponent: () => import('./features/profile/profile.component').then(m => m.ProfileComponent),
-    canActivate: [authGuard],
-  },
+  // Backward-compat redirects
+  { path: 'pod', redirectTo: 'explorer/files' },
+  { path: 'apps', redirectTo: 'explorer/apps' },
+  { path: 'profile', redirectTo: 'explorer/profile' },
   { path: '**', redirectTo: '' },
 ];

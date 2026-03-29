@@ -4,7 +4,7 @@ import { QuizAnswers } from '../models/quiz.model';
 
 @Injectable({ providedIn: 'root' })
 export class OnboardingService {
-  readonly steps = ['concept', 'provider', 'create', 'callback', 'explore'];
+  readonly steps = ['concept', 'provider', 'create', 'callback', 'complete'];
   readonly currentStep = signal<number>(0);
   readonly selectedProvider = signal<Provider | null>(null);
   readonly quizAnswers = signal<QuizAnswers | null>(null);

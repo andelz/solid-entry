@@ -1,0 +1,26 @@
+<div class="step-complete">
+  <div class="success-icon">&#9670;</div>
+  <h2>Your pod is ready!</h2>
+  <p class="intro">
+    You now have your own data home on the web. Apps can connect to it,
+    but you decide what they can see and do.
+  </p>
+
+  <div class="pod-card card">
+    <div class="pod-detail">
+      <span class="pod-label">Your data home</span>
+      <span class="pod-value mono">{{ podHost }}</span>
+    </div>
+    @if (auth.webId(); as webId) {
+      <div class="pod-detail">
+        <span class="pod-label">Your web address</span>
+        <app-webid-display [webId]="webId" />
+      </div>
+    }
+  </div>
+
+  <div class="cta-group">
+    <a routerLink="/explorer" class="btn btn-primary">Open my pod &rarr;</a>
+    <a routerLink="/" class="btn btn-ghost">&larr; Back to home</a>
+  </div>
+</div>

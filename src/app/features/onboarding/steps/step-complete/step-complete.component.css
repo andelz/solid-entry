@@ -1,0 +1,59 @@
+.step-complete {
+  max-width: 520px;
+  text-align: center;
+  animation: slideInUp 0.4s ease both;
+}
+
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  color: var(--color-primary);
+}
+
+h2 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.intro {
+  color: var(--color-text-muted);
+  margin-bottom: 28px;
+}
+
+.pod-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.pod-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pod-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.pod-value {
+  font-size: 0.95rem;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
