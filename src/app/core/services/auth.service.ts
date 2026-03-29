@@ -36,7 +36,7 @@ export class AuthService {
       redirectUrl: `${environment.appOrigin}/onboarding/callback`,
       clientName: 'Solid Onboarding',
     };
-    loginParams.clientId = `${environment.appOrigin}/id`;
+    loginParams.clientId = environment.clientIdUrl;
     await login(loginParams);
   }
 

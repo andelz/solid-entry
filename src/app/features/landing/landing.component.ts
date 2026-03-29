@@ -40,9 +40,14 @@ export class LandingComponent implements AfterViewInit {
   }
 
   loginCustom(): void {
-    const issuer = this.customIssuer().trim();
-    if (!issuer) return;
-    const url = issuer.startsWith('http') ? issuer : `https://${issuer}`;
-    this.auth.loginWithProvider(url);
+    const raw = this.customIssuer().trim();
+    if (!raw) return;
+    const url = raw.startsWith('http') ? raw : `https://${raw}`;
+    try {
+      const issuer = new URL(url).origin;
+      this.auth.loginWithProvider(issuer);
+    } catch {
+      // invalid URL — ignore
+    }
   }
 }

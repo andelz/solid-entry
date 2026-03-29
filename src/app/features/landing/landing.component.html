@@ -31,7 +31,7 @@
                 type="text"
                 [ngModel]="customIssuer()"
                 (ngModelChange)="customIssuer.set($event)"
-                placeholder="Or enter your pod address, e.g. mypod.example.com"
+                placeholder="Or enter your pod address, e.g. solid.example.com/you"
                 class="login-picker-input"
               />
               <button class="btn btn-primary btn-sm" (click)="loginCustom()" [disabled]="!customIssuer().trim()">Log in</button>
