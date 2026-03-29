@@ -13,7 +13,6 @@
   gap: 8px;
   flex-wrap: wrap;
   margin-bottom: 32px;
-  border-bottom: 1px solid var(--color-border);
   padding-bottom: 12px;
 }
 
@@ -28,8 +27,8 @@
   cursor: pointer;
   transition: background var(--transition-fast), color var(--transition-fast);
 }
-.tab-btn:hover  { background: var(--color-bg); color: var(--color-text); }
-.tab-btn.active { background: var(--color-primary); color: white; }
+.tab-btn:hover  { background: var(--color-surface-high); color: var(--color-text); }
+.tab-btn.active { background: var(--color-text); color: var(--color-bg); }
 
 .app-grid {
   display: grid;

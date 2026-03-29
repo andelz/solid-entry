@@ -17,12 +17,19 @@ h2 { font-size: 1.7rem; font-weight: 700; margin-bottom: 12px; }
   text-align: center;
 }
 
-.diagram-side h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; color: var(--color-text-muted); }
+.diagram-side h3 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  color: var(--color-text-muted);
+}
 .diagram-side p  { font-size: 0.85rem; color: var(--color-text-muted); margin-top: 8px; }
 .diagram-side svg { animation: slideInUp 0.5s ease both; }
 .diagram-side.solid svg { animation-delay: 0.15s; }
 
-.diagram-arrow { font-size: 2rem; color: var(--color-border); }
+.diagram-arrow { font-size: 2rem; color: var(--color-text-muted); }
 
 .bullets {
   list-style: none;
@@ -31,7 +38,6 @@ h2 { font-size: 1.7rem; font-weight: 700; margin-bottom: 12px; }
   gap: 12px;
   margin-bottom: 36px;
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 20px 24px;
 }

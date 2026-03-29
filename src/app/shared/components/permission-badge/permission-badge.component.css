@@ -1,4 +1,11 @@
-.permission-badge { font-size: 0.75rem; font-weight: 600; padding: 2px 10px; border-radius: var(--radius-full); }
-.permission-badge.public  { background: #D1FAE5; color: #065F46; }
-.permission-badge.private { background: #F3F4F6; color: #374151; }
-.permission-badge.shared  { background: #EDE9FE; color: #4C1D95; }
+.permission-badge {
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.permission-badge.public  { background: var(--color-surface-high); color: var(--color-text); }
+.permission-badge.private { background: var(--color-surface-low); color: var(--color-text-muted); }
+.permission-badge.shared  { background: var(--color-surface-high); color: var(--color-text-muted); }

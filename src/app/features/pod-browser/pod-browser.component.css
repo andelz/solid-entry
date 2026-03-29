@@ -37,7 +37,7 @@
 }
 .crumb-btn:hover { text-decoration: underline; }
 .crumb-current { color: var(--color-text-muted); }
-.sep { color: var(--color-border); }
+.sep { color: var(--color-text-muted); }
 
 .skeleton-grid, .resource-grid {
   display: grid;

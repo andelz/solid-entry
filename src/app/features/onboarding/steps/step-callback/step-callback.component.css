@@ -16,7 +16,15 @@
 .welcome { font-size: 1.05rem; color: var(--color-text-muted); margin-bottom: 28px; }
 
 .webid-section { text-align: left; margin-bottom: 28px; }
-.webid-section label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted); margin-bottom: 8px; }
+.webid-section label {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
 .webid-hint { font-size: 0.82rem; color: var(--color-text-muted); margin-top: 8px; }
 
 .step-cta { font-size: 1rem; padding: 12px 28px; }
@@ -41,9 +49,9 @@
   animation-delay: calc(var(--i) * 0.06s);
 }
 
-.confetti-piece:nth-child(3n)   { background: #7C3AED; }
-.confetti-piece:nth-child(3n+1) { background: #10B981; transform-origin: center; width: 10px; height: 10px; border-radius: 50%; }
-.confetti-piece:nth-child(3n+2) { background: #F59E0B; }
+.confetti-piece:nth-child(3n)   { background: #E5E5E5; }
+.confetti-piece:nth-child(3n+1) { background: #737373; transform-origin: center; width: 10px; height: 10px; border-radius: 50%; }
+.confetti-piece:nth-child(3n+2) { background: #A3A3A3; }
 
 /* Sign-in */
 .intro { color: var(--color-text-muted); margin-bottom: 28px; text-align: left; }

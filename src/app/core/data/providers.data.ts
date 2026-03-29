@@ -15,29 +15,16 @@ export const PROVIDERS: Provider[] = [
     logoUrl: '',
   },
   {
-    id: 'use-id',
-    name: 'use.id',
-    url: 'https://use.id',
-    registrationUrl: 'https://use.id',
-    oidcIssuer: 'https://use.id',
-    description: 'A user-friendly managed Solid pod provider with a clean signup experience.',
+    id: 'inrupt',
+    name: 'Inrupt PodSpaces',
+    url: 'https://start.inrupt.com',
+    registrationUrl: 'https://start.inrupt.com/profile',
+    oidcIssuer: 'https://login.inrupt.com',
+    description: 'Managed pod hosting by the company co-founded by Tim Berners-Lee. Easy signup, reliable infrastructure.',
     selfHosted: false,
     customDomain: false,
     difficulty: 'easy',
-    tags: ['free', 'managed'],
-    logoUrl: '',
-  },
-  {
-    id: 'trinpod',
-    name: 'TrinPod',
-    url: 'https://trinpod.us',
-    registrationUrl: 'https://trinpod.us/register',
-    oidcIssuer: 'https://trinpod.us',
-    description: 'Managed pod hosting with focus on privacy and data ownership.',
-    selfHosted: false,
-    customDomain: true,
-    difficulty: 'easy',
-    tags: ['managed', 'privacy'],
+    tags: ['free', 'managed', 'reliable'],
     logoUrl: '',
   },
   {
@@ -76,7 +63,7 @@ export function recommendProvider(hosting: string, customDomain: string, cli: st
     return PROVIDERS.find(p => p.id === 'redpencil')!;
   }
   if (customDomain === 'yes') {
-    return PROVIDERS.find(p => p.id === 'trinpod')!;
+    return PROVIDERS.find(p => p.id === 'redpencil')!;
   }
   return PROVIDERS.find(p => p.id === 'solidcommunity')!;
 }
